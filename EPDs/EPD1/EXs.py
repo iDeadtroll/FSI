@@ -98,7 +98,6 @@ else:
 print ("No se ha encontrado ningun balance superior al umbral.")
 
 # Experimento 5 Resuelto
-
 cuentas = {("sevilla",41013) : [300,450,True], ("madrid",18650) : [400,300,False],
 ("segovia",28901) : [500,350,False], ("segovia",28902) : [450,500,True]}
 balancesPositivos = []
