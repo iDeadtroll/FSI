@@ -1,4 +1,4 @@
-False: Es un operador booleano que representa lo opuesto de True1.
+False: Es un operador booleano que representa lo opuesto de True.
 None: No hay valor nulo en Python. None es un objeto que representa la ausencia de un valor.
 True: Es un operador booleano que representa lo opuesto de False.
 and: Es un operador lógico en Python que devuelve True si ambos operandos son verdaderos.
