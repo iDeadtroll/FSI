@@ -1,7 +1,11 @@
 # Para implementar este ejemplo se especifica la ruta completa al archivo pero la idea es la misma.
 print("Ejemplo1")
+
+
 class ejemplos:
-    handle = open('C:\\Users\\joni-\\Documents\\FSI\\EBs\\EjemplosClase\\Tema1\\palabras', 'r')
+    handle = open(
+        "C:\\Users\\joni-\\Documents\\FSI\\EBs\\EjemplosClase\\Tema1\\palabras", "r"
+    )
     counts = dict()
     for line in handle:
         words = line.split()
@@ -14,10 +18,11 @@ class ejemplos:
         if bigcount is None or count > bigcount:
             bigword = word
             bigcount = count
-    print(f'La palabra: {bigword}, se repite {bigcount} veces\n')
-    
+    print(f"La palabra: {bigword}, se repite {bigcount} veces\n")
 
-# Cuando un programa está en ejecución, fluye de un paso al siguiente. Como programadores, establecemos “caminos” para que el programa los siga.
+
+# Cuando un programa está en ejecución, fluye de un paso al siguiente.
+# Como programadores, establecemos “caminos” para que el programa los siga.
 # 'Secuencia'
 print("Ejemplo2")
 x = 2
@@ -29,18 +34,18 @@ print(x)
 print("\nEjemplo3")
 x = 5
 if x < 10:
-    print('Smaller')
+    print("Smaller")
 if x > 20:
-    print('Bigger')
-print('Finis')
+    print("Bigger")
+print("Finis")
 
 # 'Bucle'
 print("\nEjemplo4")
 n = 5
-while n > 0 :
+while n > 0:
     print(n)
     n = n - 1
-print('Blastoff!')
+print("Blastoff!")
 
 # Expresiones numericas:
 print("\nEjemplo5: suma")
@@ -62,16 +67,16 @@ kk = jj % 5
 print(kk)
 
 print("Ejemplo9: potencia")
-print(4 ** 3)
+print(4**3)
 
 print("Ejemplo10: division entera")
-div = 11//5
+div = 11 // 5
 print("11 dividido entre 5: {}".format(div))
 
 # Precedencia de operaciones
 # parentesis -> potencia -> producto -> suma -> de izquierda a derecha
 print("\nEjemlo11: precedencia de operaciones")
-x = 1 + 2 ** 3 / 4 * 5
+x = 1 + 2**3 / 4 * 5
 print(x)
 
 # El tipo importa
@@ -82,8 +87,8 @@ print(type(xx))
 temp = 98.6
 print(type(temp))
 
-eee = 'hello ' + 'there'
-print(type (eee))
+eee = "hello " + "there"
+print(type(eee))
 
 # Conversion de tipos:
 print("Ejemplo13: Conversion de tipos")
@@ -104,31 +109,31 @@ print(99.0 / 100.0)
 
 # Conversion de cadenas
 
-sval = '123'
+sval = "123"
 print(type(sval))
 ival = int(sval)
 print(type(ival))
 print(ival + 1)
-nsv = 'hello bob'
+nsv = "hello bob"
 # niv = int(nsv)
 
 # Entrada de usuario
 
-nam = input('Who are you? ')
-print('Welcome', nam)
+nam = input("Who are you? ")
+print("Welcome", nam)
 
-# Convirtiendo entrada de usuario
+# Casting entrada de usuario
 
-inp = input('Europe floor?: ')
+inp = input("Europe floor?: ")
 usf = int(inp) + 1
-print('US floor', usf)
+print("US floor", usf)
 
 # Imprimir con formato
-name = 'Pepe'
+name = "Pepe"
 salary = 900
 # Usando f-strings (Python 3.6 y superior)
-print(f'This is {name} and my salary is {salary:.2f} $/month.')
+print(f"This is {name} and my salary is {salary:.2f} $/month.")
 # Usando str.format()
-print('This is {} and my salary is {:.2f} $/month.'.format(name,salary))
+print("This is {} and my salary is {:.2f} $/month.".format(name, salary))
 # Usando printf-style % formatting
-print('This is %s and my salary is %.2f $/month.' % (name,salary))
+print("This is %s and my salary is %.2f $/month." % (name, salary))
