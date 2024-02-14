@@ -1,4 +1,4 @@
-# Ejercicio 1: tomando como primer termino '1'
+# Ejercicio 1: Implementar la funcion fibonacci, tomando como primer termino '1'
 
 
 # Fibonacci recursivo
@@ -66,3 +66,5 @@ def fiboDic_2(n):
 
 
 print(fiboDic_2(6))
+
+# Ejercicio 2: Implementar la funcion esPrimo que indique si el parametro recibido es primo o no.
