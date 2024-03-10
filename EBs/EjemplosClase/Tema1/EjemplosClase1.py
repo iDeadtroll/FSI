@@ -137,3 +137,42 @@ print(f"This is {name} and my salary is {salary:.2f} $/month.")
 print("This is {} and my salary is {:.2f} $/month.".format(name, salary))
 # Usando printf-style % formatting
 print("This is %s and my salary is %.2f $/month." % (name, salary))
+
+
+# Condicionales
+
+x = 5
+if x < 10:
+
+    print("Smaller")
+
+if x > 20:
+
+    print("Bigger")
+
+print("Finis")
+
+# Operadores de comparacion
+
+x = 5
+if x == 5:
+
+    print("Equals 5")
+
+if x > 4:
+
+    print("Greater than 4")
+
+if x >= 5:
+
+    print("Greater than or Equals 5")
+
+if x < 6:
+    print("Less than 6")
+if x <= 5:
+
+    print("Less than or Equals 5")
+
+if x != 6:
+
+    print("Not equal 6")
