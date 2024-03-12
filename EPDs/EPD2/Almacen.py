@@ -1,5 +1,6 @@
 # Organizar en modulos como indica la práctica
 
+
 class Electrodomestico:
     __nombre = ""
     __precio = 0.0

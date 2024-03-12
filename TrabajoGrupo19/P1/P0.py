@@ -1,27 +1,26 @@
-# Abre el archivo
-f = open("19_ucl_stats.csv", "r")
-# Lee el contenido del archivo
-contenido = f.read().splitlines()
+datos = dict()
+datos[0] = "Jonathan"
+print(datos)
 
-# Elimina la primera línea (encabezado)
-contenido = contenido[1:]
 
-# Inicializa el diccionario y la lista
+# Usamos import csv para leer el dataset.
+import csv
+
 diccionario1 = dict()
-lista_nums_registros = list()
+id_registros = []
+encabezado = []
 
-# Recorre cada línea del contenido
-for linea in contenido:
-    # Divide la línea por comas
-    tupla_valor = tuple(linea.split(","))
+with open("/home/developer/proyectos/FSI/TrabajoGrupo19/P1/19_ucl_stats.csv", "r", encoding="utf-8") as archivo:
+    contenido = csv.reader(archivo, delimiter=",")
+    
+    encabezado = next(contenido)
 
-    # Agrega el primer valor a la lista
-    lista_nums_registros.append(tupla_valor[0])
-
-    # Crea una clave con el primer y último valor
-    tupla_clave = (tupla_valor[0], tupla_valor[-1])
-
-    # Agrega la tupla al diccionario
-    diccionario1[tupla_clave] = tupla_valor
-
-print(lista_nums_registros)
+    # Empesamos a leer el contenido desde la segunda linea
+    next(contenido, None)
+    #   Recorrido para construir el diccionario y la lista de IDs de cada registro.
+    for linea in contenido:
+        valor = tuple(linea)
+        id_registros.append(valor[0])
+        clave = valor[0]
+        diccionario1[clave] = valor
+        

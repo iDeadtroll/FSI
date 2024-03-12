@@ -69,7 +69,7 @@ print(fiboDic_2(6))
 
 
 # Ejercicio 2: Implementar la funcion esPrimo que indique si el parametro recibido es primo o no.
-def esPrimoRecursivo(n, i = 2):
+def esPrimoRecursivo(n, i=2):
     # Caso base: si n es menor que 2, no es primo
     if n < 2:
         return False
@@ -82,7 +82,8 @@ def esPrimoRecursivo(n, i = 2):
     # Llamada recursiva a la función es_primo incrementando el valor de i
     else:
         return esPrimoRecursivo(n, i + 1)
-    
+
+
 print(esPrimoRecursivo(2))
 
 
@@ -107,6 +108,7 @@ def esPrimoIterativo_1(n):
     # Si n no es divisible por ningún número en el rango, entonces es primo
     return True
 
+
 def esPrimoIterativo_2(n):  # O(n)
     # Si n es menor o igual a 1, no es primo
     if n <= 1:
@@ -116,5 +118,6 @@ def esPrimoIterativo_2(n):  # O(n)
         if n % i == 0:  # Si n es divisible por i, entonces no es primo
             return False
     return True
+
 
 print(esPrimoIterativo_2(2))

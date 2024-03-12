@@ -2,7 +2,7 @@ class ejemplos:
     # # Solicita al usuario que introduzca el nombre de un archivo. El nombre del archivo se guarda en la variable 'name'
     name = input("Enter file:")
     # # Abre el archivo cuyo nombre fue introducido por el usuario. El objeto de archivo abierto se guarda en la variable handle
-    handle = open(name, 'r')
+    handle = open(name, "r")
     #  Inicializa un diccionario vacío llamado 'counts'. Este diccionario se utilizará para contar la frecuencia de cada palabra en el archivo.
     counts = dict()
     for line in handle:  # Bucle que recorre cada línea en el archivo.
