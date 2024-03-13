@@ -41,29 +41,42 @@ def nuevo_registro():
     # Evaluar si el nuevo registro existe, caso contrario se agrega el nuevo registro al diccionario.
     if nueva_tupla[0] not in diccionario1:
         diccionario1[(nueva_tupla[0])] = nueva_tupla
-        print(diccionario1.get(nueva_tupla[0]))
+        print("\nEl registro :" + str(diccionario1.get(nueva_tupla[0])) + "\n Ha sido hagregado correctamente!\n")
     else:
-        print("El registro ", nueva_tupla[0], " ya existe. Intente con otro numero de registro.")
+        print("El registro con ID " + nueva_tupla[0] + " ya existe. Intente con otro numero de registro.")
 
 
 
 
 def tabla_diccionario():
-    # TODO: mostrar un formato de tabla con los tamanios de los campos fijos
-    for k, v in diccionario1.items():
-        print("    |   ".join(map(str, v)))
+    # Mostrar un formato de tabla con los tamaños de los campos fijos
+    print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}\n".format(*encabezado))
+    # Mostramos las 10 primeras filas
+    contador = 0
+    for v in diccionario1.values():
+        if contador < 10:
+            print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}".format(*v))
+            contador += 1
+        else:
+            break
 
 
 def borrar_registro():
     # Mostramos los 10 primeros
     for i in range(1,10):
         print(diccionario1.get(str(i)))
-    # TODO: vefificar que el registro existe y pedir confirmacion para eliminarlo
-
+    # Vefificar que el registro existe y pedir confirmacion para eliminarlo
     reg = str(input("Introduce el ID del registro: "))
-    diccionario1.pop(reg)
-
-    # TODO: mostrar el ID del registro que se ha aliminado e indicar que se ha realizado correctamente.
+    while reg not in diccionario1.keys():
+        print("ID no exite!")
+        reg = str(input("Introduce el ID del registro: "))
+    print("¿Desea eliminar el registro: " + reg + " ?")
+    confirmar = str.upper(input("Presione[S] para confirmar: "))
+    if reg in diccionario1.keys() and confirmar == "S": 
+        diccionario1.pop(reg)
+        print("Registro" +"[" + reg + "]" + "eliminado correctamente!\n")
+    else:
+        print(("Registro" +"[" + reg + "]" + "no eliminado!\n"))
 
     # Mostramos los 10 primeros y verificamos que se ha eliminado
     for i in range(1,10):
