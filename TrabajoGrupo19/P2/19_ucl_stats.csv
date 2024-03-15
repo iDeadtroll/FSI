@@ -1,4 +1,4 @@
-playerID,Player,Nationality,Pos,Club,Age,Born,MP,Starts,Min,90s,Goals,Assists,G+A,G-PK,PK
+ID,Player,Nationality,Pos,Club,Age,Born,MP,Starts,Min,90s,Goals,Assists,G+A,G-PK,PK
 1,Liel Abada, ISR,"FW,MF",Celtic,20,2001,5,4,217,2.4,0,0,0,0,0
 2,Oliver Abildgaard, DEN,MF,Celtic,26,1996,2,0,63,0.7,0,0,0,0,0
 3,Mohammad Abu Fani, ISR,MF,Maccabi Haifa,24,1998,6,4,400,4.4,0,0,0,0,0
