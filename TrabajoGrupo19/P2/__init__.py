@@ -1,11 +1,9 @@
 from P2 import Almacen
+def data_loader(ruta):
+    # 'Alamacen.fromCSV() usa el patron Singleton llamando a la unica instancia Almacen'
+    Almacen.fromCSV(ruta)
 
 def main():
-    
-    jugadores, cabecera = Almacen.fromCSV("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats.csv")
-    print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*cabecera))
-    for j in jugadores:
-        print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*j))
-
+    data_loader("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats.csv")
 if __name__ == "__main__":
     main()
