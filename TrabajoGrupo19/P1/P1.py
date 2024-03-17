@@ -139,7 +139,7 @@ def menu_principal():
     s = True
     while s:
         mostrarOpciones()
-        opt = input("Seleccione una opcion (1-5): ")
+        opt = input("Seleccione una opcion (1-6): ")
         print("\n")
 
         match opt:

@@ -199,50 +199,189 @@ class Jugador:
 # Clase que implementa las propiedades y metodos que permiten gestionar la lista de objetos Jugador
 class Almacen:
 
-    _instance = None  # variable de clase que se utiliza para almacenar la única instancia de Almacen
-    _jugadores = list()
-    _cabecera = list()
+    __jugadores = list() # Lista que contendrá los registro de jugadores
+    __cabecera = list()  # Lista que contendrá la cabecera con los nombres de los campos
 
     def __init__(self):
-        self._jugadores = []
-        self._cabecera = []
-    @property
-    def jugadore(self):
-        return self._jugadores
+        self.__jugadores = []
+        self.__cabecera = []
 
-    def altaJugador(self, j: Jugador):
-        self._jugadores.append(j)
-        return j
+    # @property
+    def jugadores(self):
+        return self.__jugadores
+    
+    # @property
+    def cabecera(self):
+        return self.__cabecera
+    
+        
+        
+    def altaJugador(self):
+        msg = 0
+        valido = False
+        print("Intoduzca los datos del jugador:")
+        while not valido:
+            # Pedir los datos del jugador validar los datos
+            if msg > 0:
+                print("Intoduzca los datos del jugador nuevamente:")
+            nombre = input("Nombre: ")
+            if not all(palabra.isalpha() for palabra in nombre.split()) or nombre == "":
+                print("Error: el nombre debe tener caracteres entre (A/a-Z/z).")
+                msg+=1
+                continue
+            
+            nacionalidad = input("Nacionalidad: ")
+            if not (nacionalidad.isalpha() and len(nacionalidad) == 3):
+                print("Error: nacionalidad debe tener 3 caractéres (A-Z).Ejemplo: ESP, ITA, FRA...")
+                msg+=1
+                continue
+            
+            posiciones_validas = ["FW", "MF", "DF", "GK"]
+            pos = input("Posicion: ")
+            if pos not in posiciones_validas:
+                print("Error: posicion debe ser una de las siguientes: " + ", ".join(posiciones_validas))
+                msg+=1
+                continue
+            
+            club = input("Nombre del club: ")
+            if not all(palabra.isalpha() for palabra in club.split()):
+                print("Error: el nombre debe tener caracteres entre (A/a-Z/z).")
+                msg+=1
+                continue
 
-    def bajaJugador(self, ID: int):
-        pass
+            edad = input("Edad: ")
+            if not edad.isdigit() or not 16 <= int(edad) <= 40:
+                print("Error: la edad debe ser un número entre 16 y 40.")
+                msg+=1
+                continue
+                    
+            born = input("Nacimiento: ")
+            if not (born.isdigit() and 1980 <= int(born) <= 2024):
+                print("Error: el año de nacimiento debe ser un número entre 1980 y 2024.")
+                msg+=1
+                continue
+            
+            mp = input("Partidos jugados: ")
+            if not mp.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            starts = input("Partidos como titular: ")
+            if not starts.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            min = input("Minutos jugados: ")
+            if not min.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+
+            n = input("Partidos completos jugados: ")
+            try:
+                n_float = float(n)
+                if n_float < 0:
+                    print("Error: la entrada debe ser un número positivo.")
+                    msg+=1
+                    continue
+            except ValueError:
+                print("Error: la entrada debe ser un número decimal.")
+                msg+=1
+                continue
+            
+            goles = input("Goles: ")
+            if not goles.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            asistencias = input("Asistencias: ")
+            if not asistencias.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            g_a = input("Goles más asistencias: ")
+            if not g_a.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            g_pk = input("Goles menos penaltis: ")
+            if not g_pk.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            pk = input("Penaltis: ")
+            if not pk.isdigit():
+                print("Error: la entrada debe ser un numero.")
+                msg+=1
+                continue
+            
+            valido = True
+        print("Datos del jugador correctos!")
+        id  = len(self.__jugadores) + 1
+    
+        # Crea el objeto Jugador
+        j = Jugador(id,nombre,nacionalidad, pos,club,int(edad),int(born),int(mp),int(starts),int(min),float(n),int(goles),int(asistencias),int(g_a),int(g_pk),int(pk))
+
+        self.__jugadores.append(j)
+        print(f"Jugador con ID {id} añadido correctamente")
+
+    def bajaJugador(self, id: int):
+        for jugador in self.__jugadores:
+            if jugador.id == id:
+                self.__jugadores.remove(jugador)
+                print(f"Jugador con id {id} ha sido eliminado.")
+                return
+        print(f"No se encontró ningún jugador con id {id}.")
+
 
     def listadoJugadores(self):
-        # 'Alamacen.fromCSV() usa el patron Singleton llamando a la unica instancia Almacen'
-        jugadores, cabecera = Almacen.fromCSV(ruta)
-        print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*cabecera))
 
-        # '*j' hace referencia a un objeto iterable necesario recorrer campo a campo del objeto Jugador
-        for j in jugadores:
-            print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*j))
+        # Mostramos la cabecera en formato de tabla estableciendo separadores para cada campo
+        for cabecera in self.__cabecera:
+            print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*cabecera))
+        # '*jugador' hace referencia a un objeto iterable necesario recorrer campo a campo del objeto Jugador
+        for jugador in self.__jugadores:
+            # Mostramos los datos del jugador en formato de tabla estableciendo separadores para cada campo
+            print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*jugador))
 
 
 
-    def agruparPorCampo(self, campo: str):
-        return {getattr(j, campo): j for j in self._jugadores}
+    def agruparPorCampo(self): # Motrar la media de edad por pais.
+        # Diccionario para almacenar las edades de los jugadores por país
+        edades_por_pais = {}
 
-    # Declaramos fromCSV()como método estático para llamar al método sin la necesidad
-    # de crear una instancia de Almacen en cada llamada a dicho método
-    # (necesario para implementar Patron Singleton)
+        # Recorrer la lista de jugadores
+        for jugador in self.__jugadores:
+            # Si el país del jugador no está en el diccionario, añadirlo con una lista vacía
+            if jugador not in edades_por_pais:
+                edades_por_pais[jugador.nacionalidad] = []
 
-    def fromCSV(ruta: str):  # Recibe la ruta del archivo como parámetro
+            # Añadir la edad del jugador a la lista de su país
+            edades_por_pais[jugador.nacionalidad].append(jugador.edad)
+
+        # Calcular la media de edad para cada país
+        media_edad_por_pais = {pais: sum(edades) / len(edades) for pais, edades in edades_por_pais.items()}
+        print(" País", " | Media de Edad")
+        print("_________________________")
+        for pais, media_edad in media_edad_por_pais.items():
+            print(f"{pais}   | {media_edad}")
+
+
+    def fromCSV(self, ruta: str):
 
         with open(ruta, "r") as archivo:
             contenido = csv.reader(
                 archivo
-            )  # Creamos un objeto contenido para despues iterar linea a linea
-            cabecera = next(contenido)  # Saltamos la cabecera
-            for linea in contenido:  # Recorremos contenido linea a linea
+            )   # Creamos un objeto contenido para despues iterar linea a linea
+                # Añadimos la primera linea desde contenido a la lista cabecera
+            self.__cabecera.append(next(contenido))
+            for linea in contenido:  # Recorremos contenido linea a linea y desempaquetamos
                 (
                     id,
                     jugador,
@@ -260,31 +399,30 @@ class Almacen:
                     G_A,
                     G_PK,
                     PK,
-                ) = linea  # Desempaquetado de cada linea en sus componentes y almacenarlo en variables
-                # Creamos un objeto Jugador pasando las variables declaradas antes como parametros
+                ) = linea  # Desempaquetado de cada linea en sus componentes para almacenarlo en variables
+                    # Creamos un objeto Jugador pasando las variables antes declaradas como parametros
                 jugador = Jugador(
                     int(
-                        id.replace(",", "")
-                    ),  # Reemplazamos las comas por cadenas vacias
+                        id.replace(",", "") # Reemplazamos las comas por cadenas vacias
+                    ),  
                     jugador,
                     nacionalidad,
                     posicion,
                     club,
-                    int(edad.replace(",", "")),
+                    int(edad.replace(",", "")), # Casting del campo a entero
                     int(nacimiento.replace(",", "")),
                     int(partidos_jugados.replace(",", "")),
                     int(partidos_titular.replace(",", "")),
                     int(minutos_jugados.replace(",", "")),
-                    float(n.replace(",", "")),
+                    float(n.replace(",", "")), # Casting del campo a float
                     int(goles.replace(",", "")),
                     int(asistencias.replace(",", "")),
                     int(G_A.replace(",", "")),
                     int(G_PK.replace(",", "")),
                     int(PK.replace(",", "")),
-                )  # Se han remplazado las comas de algunos campos para evitar que la representacion de los millares
-                # que podrian ser separados por comas no se interpreten como 1,000 sino como 1000
-                Almacen._jugadores.append(jugador)  # Añadimos un jugador a la lista
-        return # fromCSV() retorna objetos 'jugadores' y 'cabecera'
+                )   # Se han remplazado las comas de algunos campos para evitar que la representacion de los millares
+                    # que podrian estar separados por comas para que no se interpreten como 1,000 sino como 1000
+                self.__jugadores.append(jugador)  # Añadimos un jugador a la lista
 
     def toCSV(self, ruta: str):
         if ruta != None:
@@ -310,7 +448,7 @@ class Almacen:
                         "PK",
                     ]
                 )  # Escribe la cabecera
-                for jugador in self._jugadores:
+                for jugador in self.__jugadores:
                     contenido.writerow(
                         [
                             jugador.id,
