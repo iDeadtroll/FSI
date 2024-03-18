@@ -4,11 +4,12 @@ import csv
 diccionario1 = dict()
 encabezado = ()
 
+
 def data_extractor():
-    global encabezado
+    global encabezado # Llamamos a la variable 'global encabazado' porque en esta funcion vamos a modificar la variable
 
     # TODO: probar a leer el dataset sin libreria "csv"
-    with open("/home/developer/proyectos/FSI/TrabajoGrupo19/P1/19_ucl_stats.csv", "r", encoding="utf-8") as archivo:
+    with open("/home/developer/proyectos/FSI/TrabajoGrupo19/P1/19_ucl_stats.csv","r",encoding="utf-8",) as archivo:
         contenido = csv.reader(archivo, delimiter=",")
         # Asignamos la primera linea a la tupla "encabezado"
         encabezado = next(contenido)
@@ -19,11 +20,10 @@ def data_extractor():
             valor = tuple(linea)
             clave = valor[0]
             diccionario1[clave] = valor
-    
 
 
 def nuevo_registro():
-    # Nuevo registro generado a partir de los campos de la tupla encabezado. 
+    # Nuevo registro generado a partir de los campos de la tupla encabezado.
     # Tupla que hace referencia a los indices del encabezado del dataset.
     print("Introduzca nuevo registro:")
 
@@ -47,19 +47,17 @@ def nuevo_registro():
         print("El registro con ID [" + nueva_tupla[0] + "] ya existe. Intente con otro valor de registro.")
 
 
-
 def tabla_diccionario():
     # Mostrar un formato de tabla con los tamaños de los campos fijos de la cabecera
     print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}\n".format(*encabezado))
     # Mostrar un formato de tabla con los tamaños de los campos fijos del resto de filas
     for v in diccionario1.values():
-            print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}".format(*v))
-
+        print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}".format(*v))
 
 
 def borrar_registro():
     # Mostramos los 10 primeros
-    for i in range(1,10):
+    for i in range(1, 10):
         print(diccionario1.get(str(i)))
 
     # Vefificar que el registro existe y pedir confirmacion antes de eliminarlo
@@ -68,60 +66,68 @@ def borrar_registro():
         print("ID no exite!")
         reg = str(input("Introduce el ID del registro: "))
     print("¿Desea eliminar el registro: " + reg + " ?")
-    confirmar = str.upper(input("Presione[S] para confirmar: "))
-    
+    confirmar = str.upper(input("[S] para confirmar: "))
+
     # Si el registro existe en el diccionario y se confirma la accion
-    if reg in diccionario1.keys() and confirmar == "S": 
+    if reg in diccionario1.keys() and confirmar == "S":
         diccionario1.pop(reg)
-        print("Registro" +"[" + reg + "]" + "eliminado correctamente!\n")
+        print("Registro" + "[" + reg + "]" + "eliminado correctamente!\n")
     else:
-        print(("Registro" +"[" + reg + "]" + "no eliminado!\n"))
+        print("¡Operacion cancelada!")
+        print(("Registro" + "[" + reg + "]" + "no eliminado!\n"))
 
     # Mostramos los 10 primeros y verificamos que se ha eliminado
-    for i in range(1,10):
+    for i in range(1, 10):
         print(diccionario1.get(str(i)))
 
 
 def buscaClave_mostrarValor():
 
     # Vefificar que el registro existe, caso contrario pedir nuevamente el ID
-    
+
     reg = str(input("Introduce el ID del registro: "))
     while reg not in diccionario1.keys():
         print("ID no exite!")
         reg = str(input("Introduce el ID del registro: "))
     # Mostrar datos de la tupla correspondiente al registro
     if reg in diccionario1.keys():
-        d = diccionario1.get(reg)
+        d = diccionario1.get(reg) # Tomamos el valor del registro para mostrarlo en el mismo formato que el encabazado
         print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*encabezado))
         print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*d))
-    return reg
+    return reg  # Retornamos 'reg' para usarlo en como entrada en otra funcion
+
 
 def buscarEditar_mostrar():
 
-    reg = buscaClave_mostrarValor()
+    reg = (
+        buscaClave_mostrarValor()
+    )  # Llamada a la funcion que busca y muestra un registro si este existe.
     print("Desea editar el registro?")
-    editar=str.upper(input("Presion [S] para confirmar: "))
-    if editar=="S":
-        nuevo_registro = [reg]
-        i = 1
-        #   Bucle añade los campos necesarios para el nuevo registro.
-        while len(nuevo_registro) < len(encabezado):
-            nuevo_elemento = str(input("Introduzca " + encabezado[i] + ": "))
-            nuevo_registro.append(nuevo_elemento)
-            i = i + 1
+    editar = str.upper(input("[S] para confirmar: "))
+    if (
+        editar != "S"
+    ):  # Si no se confirma la operacion se cancela y el registro no se edita.
+        print("¡Operacion cancelada!")
+        return
 
-        # nueva_tupla será el valor que remplazara al valor actual del registro.
-        nueva_tupla = tuple(nuevo_registro)
-        diccionario1[reg] = nueva_tupla
-        d = diccionario1.get(reg)
-        print("\nEl registro " + str(nuevo_registro[0] + " ha sido modificado:\n"))
-        print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*encabezado))
-        print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*d))
+    # Añadimos el nuevo registro:
+    nuevo_registro = [
+        reg
+    ]  # Tomamos 'reg' porque es el id del nuevo registro y lo almacenamos en la lista.
+    i = 1
+    #   Bucle añade los campos necesarios para el nuevo registro.
+    while len(nuevo_registro) < len(encabezado):
+        nuevo_elemento = str(input("Introduzca " + encabezado[i] + ": "))
+        nuevo_registro.append(nuevo_elemento)
+        i = i + 1
 
-        
-
-    
+    # Nueva_tupla será el valor que remplazara al valor actual del registro.
+    nueva_tupla = tuple(nuevo_registro)
+    diccionario1[reg] = nueva_tupla
+    d = diccionario1.get(reg) # Tomamos el valor del nuevo registro para mostrarlo en el mismo formato que el encabazado
+    print("\nEl registro " + str(nuevo_registro[0] + " ha sido modificado:\n"))
+    print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*encabezado))
+    print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*d))
 
 
 def mostrarOpciones():
@@ -135,7 +141,7 @@ def mostrarOpciones():
 
 
 def menu_principal():
-# Menu que muestra las opciones y evalua la opcion seleccionada
+    # Menu que muestra las opciones y evalua la opcion seleccionada
     s = True
     while s:
         mostrarOpciones()
