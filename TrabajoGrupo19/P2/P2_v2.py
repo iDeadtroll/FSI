@@ -196,27 +196,10 @@ class Jugador:
         yield self.__PK
 
 
-
-
-# Clase que implementa las propiedades y metodos que permiten gestionar la lista de objetos Jugador
-class Almacen:
-
-
-    def __init__(self):
-        self.__jugadores = [] # Lista que contendrá los registro de jugadores
-        self.__cabecera = [] # Lista que contendrá la cabecera con los nombres de los campos
-
-    # @property
-    def jugadores(self):
-        return self.__jugadores
+class Funciones:
     
-    # @property
-    def cabecera(self):
-        return self.__cabecera
     
-        
-        
-    def altaJugador(self):
+    def validar_datosJugador(self, id: int):
         msg = 0
         valido = False
         print("Intoduzca los datos del jugador:")
@@ -323,12 +306,33 @@ class Almacen:
             
             valido = True
         print("Datos del jugador correctos!")
-        id  = len(self.__jugadores) + 1
+        id  =  + 1
     
         # Crea el objeto Jugador
-        j = Jugador(id,nombre,nacionalidad, pos,club,int(edad),int(born),int(mp),int(starts),int(min),float(n),int(goles),int(asistencias),int(g_a),int(g_pk),int(pk))
+        jugador = Jugador(id,nombre,nacionalidad, pos,club,int(edad),int(born),int(mp),int(starts),int(min),float(n),int(goles),int(asistencias),int(g_a),int(g_pk),int(pk))
+        return jugador
 
-        self.__jugadores.append(j)
+
+
+# Clase que implementa las propiedades y metodos que permiten gestionar la lista de objetos Jugador
+class Almacen:
+
+    def __init__(self):
+        self.__jugadores = [] # Lista que contendrá los registro de jugadores
+        self.__cabecera = [] # Lista que contendrá la cabecera con los nombres de los campos
+
+    # @property
+    def jugadores(self):
+        return self.__jugadores
+    
+    # @property
+    def cabecera(self):
+        return self.__cabecera
+    
+        
+        
+    def altaJugador(self, jugador: Jugador):
+        self.__jugadores.append(jugador)
         print(f"Jugador con ID {id} añadido correctamente")
 
     def bajaJugador(self, id: int):
@@ -344,7 +348,7 @@ class Almacen:
 
         # Mostramos la cabecera en formato de tabla estableciendo separadores para cada campo
         print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*self.__cabecera))
-        # '*jugador' hace referencia a un objeto iterable necesario recorrer campo a campo del objeto Jugador
+        # '*jugador' hace referencia a un objeto iterable necesario para recorrer campo a campo del objeto Jugador
         for jugador in self.__jugadores:
             # Mostramos los datos del jugador en formato de tabla estableciendo separadores para cada campo
             print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*jugador))
@@ -376,7 +380,7 @@ class Almacen:
 
         with open(ruta, "r") as archivo: #Abrimos el archivo en modo lectura
             contenido = csv.reader(archivo, delimiter=",")
-            self.cabecera = next(contenido) #Guardamos la primera linea en la lista 'cabecera'
+            self.__cabecera = next(contenido) #Guardamos la primera linea en la lista 'cabecera'
             for linea in contenido:
                 (
                     id,
@@ -422,26 +426,7 @@ class Almacen:
         if ruta != None:
             with open(ruta, "w", newline="") as archivo:
                 contenido = csv.writer(archivo)
-                contenido.writerow(
-                    [
-                        "ID",
-                        "Jugador",
-                        "Nacionalidad",
-                        "Posicion",
-                        "Club",
-                        "Edad",
-                        "Born",
-                        "MP",
-                        "Starts",
-                        "Min",
-                        "90s",
-                        "Goles",
-                        "Asistencias",
-                        "G+A",
-                        "G-PK",
-                        "PK",
-                    ]
-                )  # Escribe la cabecera
+                contenido.writerow(self.__cabecera)  # Escribe la cabecera
                 for jugador in self.__jugadores:
                     contenido.writerow(
                         [

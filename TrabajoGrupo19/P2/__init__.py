@@ -1,9 +1,12 @@
-from P2 import Almacen
+from P2_v2 import Almacen
+from P2_v2 import Funciones
+
 
 
 
 def main():
     almacen = Almacen()
+    funcion = Funciones()
     almacen.fromCSV("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats.csv")
     # Menu que muestra las opciones y evalua la opcion seleccionada
     s = True
@@ -20,7 +23,9 @@ def main():
         match opt:
             case "1":
                 print("Opcion 1", end="\n\n")
-                almacen.altaJugador()
+                almacen.jugadores
+                jugador = funcion.validar_datosJugador()
+                almacen.altaJugador(jugador)
             case "2":
                 print("Opcion 2", end="\n\n")
                 id = int(input("Introduzca el id del jugador: "))
