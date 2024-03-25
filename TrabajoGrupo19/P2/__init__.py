@@ -2,8 +2,6 @@ from P2_v2 import Almacen
 from P2_v2 import Funciones
 
 
-
-
 def main():
     almacen = Almacen()
     funcion = Funciones()
@@ -38,6 +36,7 @@ def main():
                 print("*----- Filtrado por Campo -----*", end="\n\n")
                 almacen.agruparPorCampo()
             case "5":
+                print("*-----Guardar y salir-----*")
                 almacen.toCSV("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats_updated.csv")
                 menu = False
                 print("Guardando datos ...\n" + "Adios!")
