@@ -4,26 +4,42 @@ import csv
 # Clase que implementa las propiedades y metodos necesarios gestionar los objetos Jugador
 class Jugador:
 
-    # Preparamos el constructor para recibir los parametros, limpiarlos y casterlos.
-    def __init__(self, id, jugador, nacionalidad, posicion, club, edad, nacimiento, partidos_jugados, partidos_titular, minutos_jugados, n, goles, asistencias, G_A, G_PK, PK):
-        self.__id = int(id.replace(",", "")) # Casting a int
+    # Método constructor del objeto Jugador
+    def __init__(
+        self,
+        id: int,
+        jugador: str,
+        nacionalidad: str,
+        posicion: str,
+        club: str,
+        edad: int,
+        nacimiento: int,
+        partidos_jugados: int,
+        partidos_titular: int,
+        minutos_jugados: int,
+        n: float,
+        goles: int,
+        asistencias: int,
+        G_A: int,
+        G_PK: int,
+        PK: int,
+    ):
+        self.__id = id
         self.__jugador = jugador
         self.__nacionalidad = nacionalidad
         self.__posicion = posicion
         self.__club = club
-        self.__edad = int(edad.replace(",", ""))
-        self.__nacimiento = int(nacimiento.replace(",", ""))
-        self.__partidos_jugados = int(partidos_jugados.replace(",", ""))
-        self.__partidos_titular = int(partidos_titular.replace(",", ""))
-        self.__minutos_jugados = int(minutos_jugados.replace(",", ""))
-        self.__n = float(n.replace(",", "")) # Casting a float
-        self.__goles = int(goles.replace(",", ""))
-        self.__asistencias = int(asistencias.replace(",", ""))
-        self.__G_A = int(G_A.replace(",", ""))
-        self.__G_PK = int(G_PK.replace(",", ""))
-        self.__PK = int(PK.replace(",", ""))
-        # Se han remplazado las comas de algunos campos para evitar que la representacion de los millares
-        # no se interpreten cómo 1,000 sino cómo 1000
+        self.__edad = edad
+        self.__nacimiento = nacimiento
+        self.__partidos_jugados = partidos_jugados
+        self.__partidos_titular = partidos_titular
+        self.__minutos_jugados = minutos_jugados
+        self.__n = n
+        self.__goles = goles
+        self.__asistencias = asistencias
+        self.__G_A = G_A
+        self.__G_PK = G_PK
+        self.__PK = PK
 
     # Getters
     @property
@@ -90,74 +106,20 @@ class Jugador:
     def PK(self):
         return self.__PK
 
-    # Setters
-    @id.setter
-    def id(self, id):
-        self.__id = id
 
-    @jugador.setter
-    def jugador(self, jugador):
-        self.__jugador = jugador
+    # @jugador.setter
+    # def jugador(self, jugador):
+    #     self.__jugador = jugador
 
-    @nacionalidad.setter
-    def nacionalidad(self, nt):
-        self.__nacionalidad = nt
+    # Para este problema podemos precindir de los metodos modificadores.
 
-    @posicion.setter
-    def posicion(self, pos):
-        self.__posicion = pos
-
-    @club.setter
-    def club(self, club):
-        self.__club = club
-
-    @edad.setter
-    def edad(self, edad):
-        self.__edad = edad
-
-    @nacimiento.setter
-    def nacimiento(self, nac):
-        self.__nacimiento = nac
-
-    @partidos_jugados.setter
-    def partidos_jugados(self, pj):
-        self.__partidos_jugados = pj
-
-    @partidos_titular.setter
-    def partidos_titular(self, pt):
-        self.__partidos_titular = pt
-
-    @minutos_jugados.setter
-    def minutos_jugados(self, mj):
-        self.__minutos_jugados = mj
-
-    @n.setter
-    def n(self, n):
-        self.__n = n
-
-    @goles.setter
-    def goles(self, goles):
-        self.__goles = goles
-
-    @asistencias.setter
-    def asistencias(self, asistencias):
-        self.__asistencias = asistencias
-
-    @G_A.setter
-    def G_A(self, G_A):
-        self.__G_A = G_A
-
-    @G_PK.setter
-    def G_PK(self, G_PK):
-        self.__G_PK = G_PK
-
-    @PK.setter
-    def PK(self, PK):
-        self.__PK = PK
 
     # Método para imprimir las propiedades del objeto Jugador como un string
     def __str__(self):
-        return f"{self.__id} {self.__jugador} {self.__nacionalidad} {self.__posicion} {self.__club} {self.__edad} {self.__nacimiento} {self.__partidos_jugados} {self.__partidos_titular} {self.__minutos_jugados} {self.__goles} {self.__asistencias} {self.__G_A} {self.__G_PK} {self.__PK}"
+        campos = ['ID', 'JUGADOR', 'NACIONALIDAD', 'POSICION', 'CLUB', 'EDAD', 'NACIMIENTO', 'PARTIDOS_JUGADOS', 'PARTIDOS_TITULAR', 'MINUTOS_JUGADOS', 'GOLES', 'ASISTENCIAS', 'G+A', 'G+PK', 'PK']
+        return '\n'.join(f'{c:<20}: {j}' for c, j in zip(campos, iter(self)))
+
+        
 
     # Método que toma las propiedades del objeto Jugador para construir un iterable de dicho objeto
     # Usaremos este método para mostrar los campos de cada Jugador con un formato de tabla más adelante
@@ -179,8 +141,16 @@ class Jugador:
         yield self.G_PK
         yield self.PK
 
+    # Método de la clase que contiene los tipos de datos de las propiedades en un orden específico
+    # Lo usaremos mas edelante para castear los parametros de entrada antes de pasarlos al constructor
+    @classmethod
+    def tipos(cls):
+        return [int, str, str, str, str, int, int, int, int, int, float, int, int, int, int, int]
 
-class Funciones:
+
+
+# Funciones auxiliares para abstraer a las clases que las invocas de buena parte de la logica.
+class Funciones: 
     
     
     def validar_datosJugador(self, id: int):
@@ -188,7 +158,7 @@ class Funciones:
         valido = False
         print("Intoduzca los datos del jugador:")
         while not valido:
-            # Pedir los datos del jugador y validar los datos
+            # Pedir los datos del jugador y validar los datos introducidos
             if count > 0:
                 print("\nIntoduzca los datos del jugador nuevamente:")
             nombre = input("Nombre: ")
@@ -313,12 +283,26 @@ class Funciones:
             edades_por_pais[jugador.nacionalidad].append(jugador.edad)
         return edades_por_pais
     
-    def limpiar_y_castear(self,dato, tipo):
-        return tipo(dato.replace(",", ""))
+    # Eliminar las comas de los datos y convertirlos al tipo correcto
+    def limpiar_y_castear(self, dato, tipo): 
+        # Si el tipo es igual a 'int' y dato es de la clase 'str'
+        if tipo == int and isinstance(dato, str):
+            # Limpia y castea 'dato'
+            return int(dato.replace(",", ""))
+        # Si el tipo es igual a 'float' y dato es de la clase 'str'
+        elif tipo == float and isinstance(dato, str):
+            return float(dato.replace(",", ""))
+        else:
+            return dato
 
     def contenido_a_coleccion(self, contenido: csv.reader, jugadores: list):
-        for linea in contenido:
-            jugador = Jugador(*linea)
+        for linea in contenido: # Cada linea es una lista de cadenas que contiene los datos de un jugador
+            # Lista por comprensión que genera una nueva lista datos_limpios_casteados.
+            # La función zip se utiliza para iterar simultáneamente sobre linea y Jugador.tipos()
+            datos_limpios_casteados = [self.limpiar_y_castear(dato, tipo) for dato, tipo in zip(linea, Jugador.tipos())]
+
+            # Con (*datos_limpios_casteados) desempaquetamos los datos de la lista y los pasamos como argumentos al constructor de Jugador
+            jugador = Jugador(*datos_limpios_casteados)
             jugadores.append(jugador)
         return jugadores
 
@@ -358,17 +342,17 @@ class Almacen:
         
         
     def altaJugador(self,id: int, jugador: Jugador):
-        self.__jugadores.append(jugador)
+        self.jugadores.append(jugador)
         print(f"Jugador con ID {id} añadido correctamente")
 
     def bajaJugador(self, id: int):
-        for jugador in self.__jugadores:
+        for jugador in self.jugadores:
             if jugador.id == id:
-                self.__jugadores.remove(jugador)
+                print(jugador)  # Esto invoca a __str__
+                self.jugadores.remove(jugador)
                 print(f"Jugador con id {id} ha sido eliminado.")
                 return
         print(f"No se encontró ningún jugador con id {id}.")
-
 
     def listadoJugadores(self):
 
@@ -388,10 +372,14 @@ class Almacen:
 
 
     def fromCSV(self, ruta: str):
+
         with open(ruta, "r") as archivo: # Abrimos el archivo en modo lectura
             contenido = csv.reader(archivo, delimiter=",")
+           
             self.cabecera = (next(contenido)) # Guardamos la primera linea en la lista 'cabecera'
-            self.jugadores = self.__funcion.contenido_a_coleccion(contenido,self.jugadores)
+
+             # Funcion que hace un tratamiento del contenido para añadirlo a una coleccion.
+            self.jugadores = self.funcion.contenido_a_coleccion(contenido,self.jugadores)
             
 
     def toCSV(self, ruta: str):

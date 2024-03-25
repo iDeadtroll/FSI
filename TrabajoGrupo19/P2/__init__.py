@@ -40,7 +40,7 @@ def main():
             case "5":
                 almacen.toCSV("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats_updated.csv")
                 menu = False
-                print("Adios")
+                print("Guardando datos ...\n" + "Adios!")
             case _:
                 print("Opcion no valida!", end="\n\n")
         if menu is True:
