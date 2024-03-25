@@ -9,8 +9,8 @@ def main():
     funcion = Funciones()
     almacen.fromCSV("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats.csv")
     # Menu que muestra las opciones y evalua la opcion seleccionada
-    s = True
-    while s:
+    menu = True
+    while menu:
         print(" **** Menu del programa **** ", end="\n\n")
         print("1. Alta jugador")
         print("2. Baja jugador")
@@ -22,27 +22,28 @@ def main():
 
         match opt:
             case "1":
-                print("Opcion 1", end="\n\n")
-                almacen.jugadores
-                jugador = funcion.validar_datosJugador()
-                almacen.altaJugador(jugador)
+                print("*----- Alta Jugador -----*", end="\n\n") 
+                # Agregamos el nuevo jugador al final de la lista, tomando el campo ID como campo autoincremental
+                # El ID lo calculamos por el tamaño del la lista 'jugadores' + 1
+                id,jugador = funcion.validar_datosJugador(len(almacen.jugadores) + 1)
+                almacen.altaJugador(id,jugador)
             case "2":
-                print("Opcion 2", end="\n\n")
-                id = int(input("Introduzca el id del jugador: "))
+                print("*----- Baja Jugador -----*", end="\n\n")
+                id = int(input("Introduzca el [id] del jugador: "))
                 almacen.bajaJugador(id)
             case "3":
-                print("Opcion 3", end="\n\n")
+                print("*----- Lista de Jugadores -----*", end="\n\n")
                 almacen.listadoJugadores()
             case "4":
-                print("Opcion 4", end="\n\n")
+                print("*----- Filtrado por Campo -----*", end="\n\n")
                 almacen.agruparPorCampo()
             case "5":
                 almacen.toCSV("/home/developer/proyectos/FSI/TrabajoGrupo19/P2/19_ucl_stats_updated.csv")
-                s = False
+                menu = False
                 print("Adios")
             case _:
                 print("Opcion no valida!", end="\n\n")
-        if s is True:
+        if menu is True:
             input("Presione [Enter] para volver al menu principal  ")
 
 
