@@ -1,5 +1,5 @@
-from P2_v2 import Almacen
-from P2_v2 import Funciones
+from P2 import Almacen
+from P2 import Funciones
 
 
 def main():

@@ -74,7 +74,7 @@ conn.commit()
 # Sentencia "SELECT" compleja
 cursor.execute("SELECT CLUB, SUM(GOALS) AS TOTAL_GOLES FROM JUGADORES WHERE CLUB LIKE '%a%' GROUP BY CLUB ORDER BY TOTAL_GOLES ASC")
 rows = cursor.fetchall()
-print("\nSuma de goles agrupados por club de los clubes que tengan una letra 'a' en su nombre y ordenado"
+print("\nSuma de goles agrupados por club de los clubes que tengan la letra 'a' en su nombre y ordenado"
       "\npor total de goles en orden ascendente:\n")
 print("¡Datos actualizados!")
 print("Club                  | Total Goles\n")
