@@ -5,7 +5,7 @@ import csv
 class Jugador:
 
     # Método constructor del objeto Jugador
-    def __init__(self,id: int,jugador: str,nacionalidad: str,posicion: str,club: str,edad: int,nacimiento: int,partidos_jugados: int,partidos_titular: int,minutos_jugados: int,n: float,goles: int,asistencias: int,G_A: int,G_PK: int,PK: int,):
+    def __init__(self,id: int,jugador: str,nacionalidad: str,posicion: str,club: str,edad: int,nacimiento: int,partidos_jugados: int,partidos_titular: int,minutos_jugados: int,n: float,goles: int,asistencias: int,G_A: int,G_PK: int,PK: int):
         self.__id = id
         self.__jugador = jugador
         self.__nacionalidad = nacionalidad
