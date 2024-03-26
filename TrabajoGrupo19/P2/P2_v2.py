@@ -1,7 +1,7 @@
 import csv
 
 
-# Clase que implementa las propiedades y metodos necesarios gestionar los objetos Jugador
+# Clase que implementa las propiedades y métodos necesarios gestionar los objetos Jugador
 class Jugador:
 
     # Método constructor del objeto Jugador
@@ -92,7 +92,7 @@ class Jugador:
     # def jugador(self, jugador):
     #     self.__jugador = jugador
 
-    # Para este problema podemos precindir de los metodos modificadores.
+    # Para este problema podemos prescindir de los métodos modificadores.
 
     # Método para imprimir las propiedades del objeto Jugador como un string
     def __str__(self):
@@ -120,7 +120,7 @@ class Jugador:
         yield self.PK
 
     # Método de la clase que contiene los tipos de datos de las propiedades en un orden específico
-    # Lo usaremos mas edelante para castear los parametros de entrada antes de pasarlos al constructor
+    # Lo usaremos más adelante para castear los parámetros de entrada antes de pasarlos al constructor
     @classmethod
     def tipos(cls):
         return [int,str,str,str,str,int,int,int,int,int,float,int,int,int,int,int]
@@ -129,14 +129,14 @@ class Jugador:
 # Funciones auxiliares para abstraer a las clases que las invocan de buena parte de la logica.
 class Funciones:
 
-    def validar_datosJugador(self, id: int):
+    def validar_datos_jugador(self, id: int):
         count = 0
         valido = False
-        print("Intoduzca los datos del jugador:")
+        print("Introduzca los datos del jugador:")
         while not valido:
             # Pedir los datos del jugador y validar los datos introducidos
             if count > 0:
-                print("\nIntoduzca los datos del jugador nuevamente:")
+                print("\nIntroduzca los datos del jugador nuevamente:")
             nombre = input("Nombre: ")
             if not all(palabra.isalpha() for palabra in nombre.split()) or nombre == "":
                 print("Error: el nombre debe tener caracteres entre (A/a-Z/z).")
@@ -152,10 +152,10 @@ class Funciones:
                 continue
 
             posiciones_validas = ["FW", "MF", "DF", "GK"]
-            pos = input("Posicion: ")
+            pos = input("Posición: ")
             if pos not in posiciones_validas:
                 print(
-                    "Error: posicion debe ser una de las siguientes: "
+                    "Error: posición debe ser una de las siguientes: "
                     + ", ".join(posiciones_validas)
                 )
                 count += 1
@@ -277,9 +277,9 @@ class Funciones:
             return dato
 
     def contenido_a_coleccion(self, contenido: csv.reader, jugadores: list):
-        for (linea) in (contenido):  # Cada linea es una lista de cadenas que contiene los datos de un jugador
+        for (linea) in (contenido):  # Cada línea es una lista de cadenas que contiene los datos de un jugador
             # Lista por comprensión que genera una nueva lista datos_limpios_casteados.
-            # La función zip se utiliza para iterar simultáneamente sobre linea y Jugador.tipos()
+            # La función zip se utiliza para iterar simultáneamente sobre línea y Jugador.tipos()
             datos_limpios_casteados = [self.limpiar_y_castear(dato, tipo)for dato, tipo in zip(linea, Jugador.tipos())]
 
             # Con (*datos_limpios_casteados) desempaquetamos los datos de la lista y los pasamos como argumentos al constructor de Jugador
@@ -288,7 +288,7 @@ class Funciones:
         return jugadores
 
 
-# Clase que implementa las propiedades y metodos que permiten gestionar la lista de objetos Jugador
+# Clase que implementa las propiedades y métodos que permiten gestionar la lista de objetos Jugador
 class Almacen:
 
     __funcion = Funciones()
@@ -317,11 +317,11 @@ class Almacen:
     def funcion(self):
         return self.__funcion
 
-    def altaJugador(self, id: int, jugador: Jugador):
+    def alta_jugador(self, id: int, jugador: Jugador):
         self.jugadores.append(jugador)
         print(f"Jugador con ID {id} añadido correctamente")
 
-    def bajaJugador(self, id: int):
+    def baja_jugador(self, id: int):
         for jugador in self.jugadores:
             if jugador.id == id:
                 print(jugador)  # Invoca al método __str__  de 'Jugador'
@@ -330,15 +330,15 @@ class Almacen:
                 return
         print(f"No se encontró ningún jugador con id {id}.")
 
-    def listadoJugadores(self):
-        # Funcion que imprime las listas 'cabecera' y 'jugadores'
+    def listado_jugadores(self):
+        # Función que imprime las listas 'cabecera' y 'jugadores'
         self.funcion.imprimir_tabla(self.cabecera, self.jugadores)
 
-    def agruparPorCampo(self):  # Mostrar la media de edad por pais.
+    def agrupar_por_campo(self):  # Mostrar la media de edad por pais.
 
         edades_por_pais = self.funcion.lista_a_diccionario(self.jugadores)
 
-        # Diccionario por comprension 'media_edad_por_pais'. Clave 'pais': Valor 'media de edad'.
+        # Diccionario por comprensión 'media_edad_por_pais'. Clave 'pais': Valor 'media de edad'.
         media_edad_por_pais = {pais: sum(edades) / len(edades) for pais, edades in edades_por_pais.items()}
         print(" País", " | Media de Edad")
         print("_________________________")
@@ -350,9 +350,9 @@ class Almacen:
         with open(ruta, "r") as archivo:  # Abrimos el archivo en modo lectura
             contenido = csv.reader(archivo, delimiter=",")
 
-            self.cabecera = next(contenido)  # Guardamos la primera linea en la lista 'cabecera'
+            self.cabecera = next(contenido)  # Guardamos la primera línea en la lista 'cabecera'
 
-            # Funcion que hace un tratamiento del contenido para añadirlo a una coleccion.
+            # Función que hace un tratamiento del contenido para añadirlo a una colección.
             self.jugadores = self.funcion.contenido_a_coleccion(contenido, self.jugadores)
 
     def toCSV(self, ruta: str):
@@ -360,8 +360,8 @@ class Almacen:
             with open(ruta, "w", newline="") as archivo:
                 contenido = csv.writer(archivo)
                 contenido.writerow(self.cabecera)  # Escribe la cabecera
-                for jugador in self.jugadores:  # Escribe el resto de lineas
-                    # Escribe la cada linea con los atributos que devuelve el método iterador de 'Jugador'
+                for jugador in self.jugadores:  # Escribe el resto de líneas
+                    # Escribe la cada línea con los atributos que devuelve el método iterador de 'Jugador'
                     contenido.writerow(list(jugador))
         else:
             print(f"El archivo {ruta} no existe")

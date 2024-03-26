@@ -6,16 +6,15 @@ encabezado = ()
 
 
 def data_extractor():
-    global encabezado # Llamamos a la variable 'global encabazado' porque en esta funcion vamos a modificar la variable
+    global encabezado # Llamamos a la variable 'global encabezado' porque en esta función vamos a modificar la variable
 
-    # TODO: probar a leer el dataset sin libreria "csv"
-    with open("/home/developer/proyectos/FSI/TrabajoGrupo19/P1/19_ucl_stats.csv","r",encoding="utf-8",) as archivo:
+    with open("19_ucl_stats.csv","r",encoding="utf-8",) as archivo:
         contenido = csv.reader(archivo, delimiter=",")
-        # Asignamos la primera linea a la tupla "encabezado"
+        # Asignamos la primera línea a la tupla "encabezado"
         encabezado = next(contenido)
 
-        # Empesamos a leer el contenido desde la segunda linea
-        # Bucle para construir el diccionario tomando como clave el primer campo de cada linea.
+        # Empezamos a leer el contenido desde la segunda línea
+        # Bucle para construir el diccionario tomando como clave el primer campo de cada línea.
         for linea in contenido:
             valor = tuple(linea)
             clave = valor[0]
@@ -24,10 +23,10 @@ def data_extractor():
 
 def nuevo_registro():
     # Nuevo registro generado a partir de los campos de la tupla encabezado.
-    # Tupla que hace referencia a los indices del encabezado del dataset.
+    # Tupla que hace referencia a los índices del encabezado del dataset.
     print("Introduzca nuevo registro:")
 
-    # "nuevo_registro" contendrá el mismo numero de elementos que "encabezado"
+    # "nuevo_registro" contendrá el mismo número de elementos que "encabezado"
     nuevo_registro = []
     i = 0
     #   Bucle añade los campos necesarios para el nuevo registro.
@@ -42,17 +41,19 @@ def nuevo_registro():
     # Evaluar si el nuevo no registro existe, caso contrario no se agregara el nuevo registro al diccionario.
     if nueva_tupla[0] not in diccionario1:
         diccionario1[(nueva_tupla[0])] = nueva_tupla
-        print("\nEl registro :" + str(diccionario1.get(nueva_tupla[0])) + "\n Ha sido hagregado correctamente!\n")
+        print("\nEl registro :" + str(diccionario1.get(nueva_tupla[0])) + "\n Ha sido agregado correctamente!\n")
     else:
         print("El registro con ID [" + nueva_tupla[0] + "] ya existe. Intente con otro valor de registro.")
 
 
 def tabla_diccionario():
     # Mostrar un formato de tabla con los tamaños de los campos fijos de la cabecera
-    print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}\n".format(*encabezado))
+    print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} "
+          "{:<8}\n".format(*encabezado))
     # Mostrar un formato de tabla con los tamaños de los campos fijos del resto de filas
     for v in diccionario1.values():
-        print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} {:<8}".format(*v))
+        print("{:<10} {:<26} {:<12} {:<10} {:<20} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<10} {:<8} {:<8} {:<8} "
+              "{:<8}".format(*v))
 
 
 def borrar_registro():
@@ -60,20 +61,20 @@ def borrar_registro():
     for i in range(1, 10):
         print(diccionario1.get(str(i)))
 
-    # Vefificar que el registro existe y pedir confirmacion antes de eliminarlo
+    # Verificar que el registro existe y pedir confirmación antes de eliminarlo
     reg = str(input("Introduce el ID del registro: "))
     while reg not in diccionario1.keys():
-        print("ID no exite!")
+        print("ID no existe!")
         reg = str(input("Introduce el ID del registro: "))
     print("¿Desea eliminar el registro: " + reg + " ?")
     confirmar = str.upper(input("[S] para confirmar: "))
 
-    # Si el registro existe en el diccionario y se confirma la accion
+    # Si el registro existe en el diccionario y se confirma la acción
     if reg in diccionario1.keys() and confirmar == "S":
         diccionario1.pop(reg)
         print("Registro" + "[" + reg + "]" + "eliminado correctamente!\n")
     else:
-        print("¡Operacion cancelada!")
+        print("¡Operación cancelada!")
         print(("Registro" + "[" + reg + "]" + "no eliminado!\n"))
 
     # Mostramos los 10 primeros y verificamos que se ha eliminado
@@ -81,13 +82,13 @@ def borrar_registro():
         print(diccionario1.get(str(i)))
 
 
-def buscaClave_mostrarValor():
+def busca_clave_mostrar_valor():
 
-    # Vefificar que el registro existe, caso contrario pedir nuevamente el ID
+    # Verificar que el registro existe, caso contrario pedir nuevamente el ID
 
     reg = str(input("Introduce el ID del registro: "))
     while reg not in diccionario1.keys():
-        print("ID no exite!")
+        print("ID no existe!")
         reg = str(input("Introduce el ID del registro: "))
     # Mostrar datos de la tupla correspondiente al registro
     if reg in diccionario1.keys():
@@ -97,23 +98,17 @@ def buscaClave_mostrarValor():
     return reg  # Retornamos 'reg' para usarlo en como entrada en otra funcion
 
 
-def buscarEditar_mostrar():
+def buscar_editar_mostrar():
 
-    reg = (
-        buscaClave_mostrarValor()
-    )  # Llamada a la funcion que busca y muestra un registro si este existe.
+    reg = (busca_clave_mostrar_valor())  # Llamada a la función que busca y muestra un registro si este existe.
     print("Desea editar el registro?")
     editar = str.upper(input("[S] para confirmar: "))
-    if (
-        editar != "S"
-    ):  # Si no se confirma la operacion se cancela y el registro no se edita.
-        print("¡Operacion cancelada!")
+    if editar != "S":  # Si no se confirma la operación se cancela y el registro no se edita.
+        print("¡Operación cancelada!")
         return
 
     # Añadimos el nuevo registro:
-    nuevo_registro = [
-        reg
-    ]  # Tomamos 'reg' porque es el id del nuevo registro y lo almacenamos en la lista.
+    nuevo_registro = [reg]  # Tomamos 'reg' porque es el id del nuevo registro y lo almacenamos en la lista.
     i = 1
     #   Bucle añade los campos necesarios para el nuevo registro.
     while len(nuevo_registro) < len(encabezado):
@@ -124,13 +119,13 @@ def buscarEditar_mostrar():
     # Nueva_tupla será el valor que remplazara al valor actual del registro.
     nueva_tupla = tuple(nuevo_registro)
     diccionario1[reg] = nueva_tupla
-    d = diccionario1.get(reg) # Tomamos el valor del nuevo registro para mostrarlo en el mismo formato que el encabazado
+    d = diccionario1.get(reg) # Tomamos el valor del nuevo registro para mostrarlo en el mismo formato que el encabezado
     print("\nEl registro " + str(nuevo_registro[0] + " ha sido modificado:\n"))
     print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*encabezado))
     print("{:<6} {:<26} {:<12} {:<10} {:<20} {:<10} {:<6} {:<10} {:<6} {:<10} {:<6} {:<10} {:<8} {:<6} {:<6} {:<6}".format(*d))
 
 
-def mostrarOpciones():
+def mostrar_opciones():
     print(" **** Menu del programa **** ", end="\n\n")
     print("1. Agregar un nuevo registro")
     print("2. Buscar un registro por su clave y mostrar sus valores")
@@ -141,33 +136,33 @@ def mostrarOpciones():
 
 
 def menu_principal():
-    # Menu que muestra las opciones y evalua la opcion seleccionada
+    # Menu que muestra las opciones y evalúa la opción seleccionada
     s = True
     while s:
-        mostrarOpciones()
-        opt = input("Seleccione una opcion (1-6): ")
+        mostrar_opciones()
+        opt = input("Seleccione una opción (1-6): ")
         print("\n")
 
         match opt:
             case "1":
-                print("Opcion 1", end="\n\n")
+                print("Agregar un nuevo registro", end="\n\n")
                 nuevo_registro()
             case "2":
-                print("Opcion 2", end="\n\n")
-                buscaClave_mostrarValor()
+                print("Buscar un registro por su clave y mostrar sus valores", end="\n\n")
+                busca_clave_mostrar_valor()
             case "3":
-                print("Opcion 3", end="\n\n")
-                buscarEditar_mostrar()
+                print("Buscar un registro por su clave, editarlo y mostrar sus valores", end="\n\n")
+                buscar_editar_mostrar()
             case "4":
-                print("Opcion 4", end="\n\n")
+                print("Borrar un registro a partir de su clave", end="\n\n")
                 borrar_registro()
             case "5":
-                print("Opcion 5", end="\n\n")
+                print("Listar todos los registros en formato de tabla", end="\n\n")
                 tabla_diccionario()
             case "6":
                 s = False
                 print("Adios")
             case _:
-                print("Opcion no valida!", end="\n\n")
+                print("Opción no valida!", end="\n\n")
         if s is True:
             input("Presione [Enter] para volver al menu principal  ")
