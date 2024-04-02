@@ -83,6 +83,67 @@ class Alquiler(Transaccion):
     __arrendador: str
     __arrendatario: str
     __amueblado: bool
-    
+    __comunidad_incluida: bool
     def __init__(self, direccion: str, poblacion: str, cod_postal: int, provincia: str, tipo_inmueble: int):
         super().__init__(direccion, poblacion, cod_postal, provincia, tipo_inmueble)
+        self.__comunidad_incluida = True
+        self.__amueblado = False
+        self.__arrendador = ""
+        self.__arrendatario = ""
+
+    @property
+    def arrendador(self):
+        return self.__arrendador
+
+    @property
+    def arrendatario(self):
+        return self.__arrendatario
+
+    @property
+    def comunidad_incluida(self):
+        return self.__comunidad_incluida
+
+    @property
+    def amueblado(self):
+        return self.amueblado
+
+    @arrendador.setter
+    def arrendador(self, arrendador):
+        self.__arrendador = arrendador
+
+    @arrendatario.setter
+    def arrendatario(self, arrendatario):
+        self.__arrendatario = arrendatario
+
+
+    @comunidad_incluida.setter
+    def comunidad_incluida(self, comunidad_incluida):
+        self.__comunidad_incluida = comunidad_incluida
+
+    @amueblado.setter
+    def amueblado(self, amueblado):
+        self.__amueblado = amueblado
+
+    def __str__(self):
+        datos =""
+        datos += "ALQUILER\n"
+        datos += super().__str__()
+        datos += "Arrendador: " + self.__arrendador + "\n"
+        datos += "Arrendatario: " + self.__arrendatario + "\n"
+        datos += "Amueblado: " + str(self.__amueblado) + "\n"
+        return datos
+
+# alquiler = Alquiler("kjkajsd","kjhjasd",76761,"Sevilla",2)
+# print(alquiler)
+# alquiler.__setattr__("amueblado",True)
+# alquiler.__setattr__("arrendador"," Pedro González López")
+# alquiler.__setattr__("arrendatario","María Pérez Domínguez")
+# print(alquiler)
+
+class VentaPublica(Transaccion):
+
+
+
+
+
+
