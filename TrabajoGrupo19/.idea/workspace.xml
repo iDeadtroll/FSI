@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d712fe1c-8980-4505-a387-57e020011744" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TrabajoGrupo19.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TrabajoGrupo19.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/P2/P2.py" beforeDir="false" afterPath="$PROJECT_DIR$/P2/P2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/P2/P2_v2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/P2/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/P2/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/P3/P3.py" beforeDir="false" afterPath="$PROJECT_DIR$/P3/P3.py" afterDir="false" />
-    </list>
+    <list default="true" id="d712fe1c-8980-4505-a387-57e020011744" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +20,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
@@ -47,6 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711473254129</updated>
       <workItem from="1711473259422" duration="985000" />
+      <workItem from="1711476988702" duration="1532000" />
     </task>
     <servers />
   </component>
