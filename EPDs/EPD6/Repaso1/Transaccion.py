@@ -141,9 +141,85 @@ class Alquiler(Transaccion):
 # print(alquiler)
 
 class VentaPublica(Transaccion):
+    def __init__(self, diaEscritura: int, mesEscritura: int, anyoEscritura: int, direccion: str, poblacion: str, codigo_postal: int, provincia: str, tipoInmueble: int):
+        super().__init__(direccion,poblacion,codigo_postal,provincia,tipoInmueble)
+        self.__diaEscritura = diaEscritura
+        self.__mesEscritura = mesEscritura
+        self.__anyoEscritura = anyoEscritura
+        self.__vpo = False
+        self.__valorCatastral = 0
+        self.__comprador = ""
+        self.__vendedor = ""
+
+    @property
+    def diaEscritura(self):
+        return self.__diaEscritura
+    @property
+    def mesEscritura(self):
+        return self.__mesEscritura
+    @property
+    def anyoEscritura(self):
+        return self.__anyoEscritura
+
+    @property
+    def vpo(self):
+        return self.__vpo
+
+    @property
+    def valorCatastral(self):
+        return self.__valorCatastral
+
+    @property
+    def comprador(self):
+        return self.__comprador
+
+    @property
+    def vendedor(self):
+        return self.__vendedor
+
+    @diaEscritura.setter
+    def diaEscritura(self, diaEscritura):
+        self.__diaEscritura = diaEscritura
+
+    @mesEscritura.setter
+    def mesEscritura(self, mesEscritura):
+        self.__mesEscritura = mesEscritura
 
 
+    @anyoEscritura.setter
+    def anyoEscritura(self, anyoEscritura):
+        self.__anyoEscritura = anyoEscritura
+    @vpo.setter
+    def vpo(self, vpo):
+        self.__vpo = vpo
 
+    @valorCatastral.setter
+    def valorCatastral(self, valorCatastral):
+        self.__valorCatastral = valorCatastral
+
+    @comprador.setter
+    def comprador(self, comprador):
+        self.__comprador = comprador
+
+    @vendedor.setter
+    def vendedor(self, vendedor):
+        self.__vendedor = vendedor
+
+
+    def __str__(self):
+        datos = ""
+        datos += "COMPRA-VENTA\n"
+        datos += super().__str__()
+        datos += "Comprador: " + self.comprador + "\n"
+        datos += "Vendedor: " + self.vendedor + "\n"
+        datos += "VPO: " + str(self.vpo) + "\n"
+        datos += "Fecha escritura" + str(self.diaEscritura) + "/" + str(self.mesEscritura) + "/" + str(self.anyoEscritura) + "\n"
+        return datos
+
+venta_publica = VentaPublica(3,4,2024,"kjkajsd","kjhjasd",76761,"Sevilla",2)
+venta_publica.__setattr__("comprador","Joni")
+venta_publica.__setattr__("vendedor","Gladys")
+print(venta_publica)
 
 
 
