@@ -6,7 +6,8 @@ def cuadrado(n):
 
 
 l = [1, 2, 3]
-l2 = map(cuadrado, l)
+l2 = list(map(cuadrado, l))
+print(l2)
 
 # Experiemento 2
 
@@ -18,9 +19,7 @@ def cuadrado(n):
 
 
 l = [1, 2, 3]
-l2 = reduce(
-    lambda s, x: s + cuadrado(x), l
-)  # El primer parametro es la funcion Lambda y el segundo es la coleccion
+l2 = reduce(lambda s, x: s + cuadrado(x), l)  # El primer parametro es la funcion Lambda y el segundo es la coleccion
 print(l2)
 
 # Experimento 3: comparar el siguiente codigo con el de Experiento 1

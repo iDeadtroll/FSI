@@ -20,9 +20,9 @@ def main():
     ingresos, gastos = introducir_datos()
 
     total_ingresos = 0
-    for ingreso in ingresos:
-        print("Concepto", ingreso[0], "Importe: ", ingreso[1])
-        total_ingresos += ingreso[1]
+    for concepto,importe in ingresos:
+        print("Concepto", concepto, "Importe: ", importe)
+        total_ingresos += importe
     print("Total de ingresos: ",total_ingresos)
 
 
@@ -34,7 +34,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-

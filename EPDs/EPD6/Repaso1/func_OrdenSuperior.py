@@ -37,6 +37,38 @@ lista2 = ['a', 'b', 'c', 'd', 'e']
 lista_tuplas = [(c,n) for c,n in zip(lista1,lista2)]
 print(lista_tuplas)
 
-map()
+#--------------------------------------------------------------------------------------------------
+# Uso de map()
+
+cadena = "ejercicio cuatro para separa por espacios"
+# Longitud de las palabras dentro de 'cadena'
+def longitudes_palabras(cadena):
+    palabras = cadena.split(" ")
+    longitudes = list(map(len, palabras))
+    return longitudes
+
+print(longitudes_palabras(cadena))
+
+#--------------------------------------------------------------------------------------------------
+# Uso de filter()
+diccionario = {
+    ("ferry", 1): [2500, 350],  # [ carga, pasajeros ]
+    ("mercante", 2): [120000, 6500],  # [ carga, autonomía ]
+    ("mercante", 3): [200000, 3200],  # [ carga, autonomía ]
+    ("ferry", 4): [3520, 420],  # [ carga, pasajeros ]
+}
 
 
+def obtenerPasajeros(diccionario):
+
+    # Filtrar los ferries
+    ferries = filter(lambda x: x[0][0] == "ferry", diccionario.items())
+
+    # Obtener los pasajeros de cada ferry
+    pasajeros = map(lambda x: x[1][1], ferries)
+
+    # Devolver los pasajeros como una tupla
+    return tuple(pasajeros)
+
+
+print(obtenerPasajeros(diccionario))

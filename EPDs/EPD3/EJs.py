@@ -95,7 +95,7 @@ diccionario = {
 def obtenerCarga(diccionario):
     mercantes = filter(lambda x: x[0][0] == "mercante", diccionario.items())
 
-    carga = map(lambda x: x[1][1], mercantes)
+    carga = map(lambda x: x[1][0], mercantes)
 
     return list(carga)
 
