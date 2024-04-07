@@ -1,0 +1,12 @@
+El código simula un escenario de control de tráfico aéreo donde se gestionan aviones que solicitan pistas para aterrizar o despegar de forma aleatoria. Se asignan pistas aleatoriamente a los aviones y se muestran mensajes para indicar el estado de cada avión durante el proceso. 
+ 
+Explicación paso a paso del código: 
+1. Se importan las librerías necesarias: threading para manejar hilos, random para generar números aleatorios y time para manejar el tiempo. 
+2. Se definen constantes como el número de pistas, tiempos de despegue y aterrizaje, tiempo de llegada a la pista, entre otros. 
+3. Se crean semáforos para controlar el acceso a las pistas y a la sección crítica. 
+4. Se define la clase Avion que hereda de threading.Thread y tiene un constructor que asigna un id, tipo y operación aleatoria (aterrizar o despegar). 
+5. Se implementa el método run de la clase Avion, donde cada avión solicita una pista, se asigna una pista de forma aleatoria, se muestran mensajes de estado y se simula el proceso de aterrizaje o despegue. 
+6. Se define la función main que crea instancias de aviones normales y VIP, inicia los hilos de los aviones y espera a que finalicen. 
+7. En la parte final del código, se llama a la función main con 12 aviones normales y 5 aviones VIP. 
+ 
+En resumen, el código simula el proceso de asignación de pistas a aviones para aterrizaje y despegue, mostrando mensajes que indican el estado de cada avión durante el proceso.

@@ -1,0 +1,70 @@
+----------------Gestión inteligente de pistas de un aeropuerto----------------
+
+Se pretende desarrollar un software que gestione el funcionamiento inteligente de las pistas de un aeropuerto. En este
+caso, la empresa Aurelinex ha comprado un nuevo aeropuerto con cinco pistas de aterrizaje/despegue. Estas pistas
+estarán identificadas por valores entre 0 y 4. Por el momento, en este aeropuerto únicamente transita una compañía
+aérea de bajo coste denominada CartonAir. Esta compañía aérea dispone de dos tipos de aviones: normales y VIP.
+Estos dos aviones estarán identificados con valores entre 0 y 1.
+
+Si un avión desea despegar o aterrizar se le asignará una pista de aterrizaje. Sin embargo, si todas las pistas de
+aterrizaje/despegue están ocupadas, la petición queda en espera, creándose un sistema de colas. Hasta que una de
+las pistas quede libre y pueda despegar/aterrizar el siguiente avión en espera. Además, suponga que puede haber más
+de una petición de aterrizaje/despegue por cada una de las pistas del aeropuerto.
+
+El intervalo de despegue entre dos aviones es de 15 segundos, el tiempo que tarda un avión en llegar a la pista es de
+5 segundos; mientras que la operación de aterrizaje es de 10 segundos.
+
+Además, se debe tener en cuenta que los aviones VIP de la compañía CartonAir son máquinas realmente innovadoras
+con unos motores que superan los 80 millones de caballos. Es por ello, por lo que el aeropuerto está preocupado debido
+a que cuando uno de estos aviones pasea por pista se genera una gran cantidad de tráfico por sus dimensiones y
+cuando éste aterrizaje o despega generan una gran cantidad de turbulencias al resto de aviones que están esperando
+su turno. Es por ello, por lo que, a pesar de que los aviones VIP tienen preferencia para despegar/aterrizar, no podrán
+despegar/aterrizar dos aviones VIP de forma consecutiva siempre y cuando haya aviones normales esperando para
+despegar y/o aterrizar. En el caso que no existan aviones normales en movimiento ni en espera, el tiempo que debe
+pasar para que un segundo avión VIP pueda despegar/aterrizar será de 30 segundos.
+
+Realice un software utilizando hilos que gestione el funcionamiento de forma inteligente de este nuevo y maravilloso
+aeropuerto teniendo en cuenta que existirán m aviones normales y n aviones VIP que desean solicitar una pista y que
+existen cinco pistas en este aeropuerto. La cantidad de aviones de cada tipo (normal y VIP) será introducida en una
+variable al inicio del programa. La cantidad de pistas en el aeropuerto será definida por una constante.
+
+• Si es preciso, utilice semáforos para sincronizar los múltiples hilos que figuren en este problema.
+
+• No es necesario que el programa termine cuando todos los aviones hayan terminado de realizar su operación
+(aterrizaje/despegue).
+
+• La asignación de un avión a una pista será un número aleatorio. Para generar este número se puede utilizar
+la función rand(), y el número deberá estar comprendido entre el intervalo [0,4].
+
+• El tipo de operación que realizará un avión (despegue o aterrizaje) se realizará igualmente de forma aleatoria.
+Utilice de nuevo la función rand() para ello.
+
+Un ejemplo de ejecución del sistema donde hay 2 aviones normales, 2 aviones VIP y 2 pistas es el siguiente:
+
+    Avión NORMAL 1 está en el aire.
+    Avión NORMAL 2 está en tierra.
+    Avión VIP 1 está en tierra.
+    Avión VIP 2 está en el aire.
+    Pista 1 preparada.
+    Pista 2 preparada.
+    Avión NORMAL 1 solicita una pista para aterrizar.
+    Avión VIP 1 solicita una pista para despegar.
+    Pista 1 asignada a Avión VIP 1.
+    Avión VIP 1 dirigiéndose a pista de despegue.
+    Avión VIP 2 solicita una pista para aterrizar. (espera)
+    Avión NORMAL 2 solicita una pista para despegar. (espera)
+    Pista 2 asignada a Avión NORMAL 1.
+    Avión NORMAL 1 aterrizando en Pista 2.
+    Avión VIP 1 despegando en Pista 1.
+    Avión NORMAL 1 dirigiéndose a puerta de embarque.
+    Pista 2 asignada a Avión VIP 2.
+    Avión VIP 1, hasta luego.
+    Avión VIP 2 aterrizando en Pista 2.
+    Avión NORMAL 1, hasta luego.
+    Pista 1 asignada a Avión NORMAL 1.
+    Avión NORMAL 2 dirigiéndose a pista de despegue.
+    Avión VIP 2 aterrizando en Pista 2.
+    Avión VIP 2 dirigiéndose a puerta de embarque.
+    Avión NORMAL 2 despegando en Pista 1.
+    Avión VIP 2, hasta luego.
+    Avión NORMAL 2, hasta luego.
