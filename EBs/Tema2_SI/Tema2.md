@@ -14,5 +14,14 @@ Los **datos** son representaciones simbólicas de atributos pertenecientes a una
 
 El **conocimiento** deriva de la comparación y relación de la información, es decir, es resultado del aprendizaje.
 
+## Tipos de Sistemas de Información:
 
+- Sistemas de **Información Geográfica**: maneja datos georreferenciasdos (SIGPAC)
+- Sistemas de **Recuperacion de Información**: busca informacion en una coleccion (Google)
+- Sistemas de **Analisis y Modelado Inteligente de Datos**: extrae conocimiento a partir de datos (KNIME, Orange)
+- Sistemas de **Colaboracion Empresarial**: apoyo a las operaciones y toma de decisiones, haciendo más facil y eficiente la administracion de la infromación.
+- Sistemas de **Información Ejecutiva**: ofrece una vision global del estado actual de funcionamiento de una empresa.
+- Sistemas de **Soporte a las Decisiones**: agiliza la toma de dacisiones.
+- Sistemas de **Información Gerencial**: ayuda con las tareas de gestion y organización.
+- Sistemas de **Procesamiento de Transacciones**: procesa la información operativa que se produce en una empresa.
 
