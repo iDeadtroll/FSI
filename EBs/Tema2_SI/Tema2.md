@@ -14,14 +14,49 @@ Los **datos** son representaciones simbólicas de atributos pertenecientes a una
 
 El **conocimiento** deriva de la comparación y relación de la información, es decir, es resultado del aprendizaje.
 
-## Tipos de Sistemas de Información:
-
-- Sistemas de **Información Geográfica**: maneja datos georreferenciasdos (SIGPAC)
-- Sistemas de **Recuperacion de Información**: busca informacion en una coleccion (Google)
-- Sistemas de **Analisis y Modelado Inteligente de Datos**: extrae conocimiento a partir de datos (KNIME, Orange)
-- Sistemas de **Colaboracion Empresarial**: apoyo a las operaciones y toma de decisiones, haciendo más facil y eficiente la administracion de la infromación.
+## Tipos de Sistemas de Información:  
+- Sistemas de **Información Geográfica**: maneja datos georreferenciados (SIGPAC)
+- Sistemas de **Recuperación de Información**: busca información en una colección (Google)
+- Sistemas de **Análisis y Modelado Inteligente de Datos**: extrae conocimiento a partir de datos (KNIME, Orange)
+- Sistemas de **Colaboración Empresarial**: apoyo a las operaciones y toma de decisiones, haciendo mas fácil y eficiente la administración de información.
 - Sistemas de **Información Ejecutiva**: ofrece una vision global del estado actual de funcionamiento de una empresa.
-- Sistemas de **Soporte a las Decisiones**: agiliza la toma de dacisiones.
-- Sistemas de **Información Gerencial**: ayuda con las tareas de gestion y organización.
-- Sistemas de **Procesamiento de Transacciones**: procesa la información operativa que se produce en una empresa.
+- Sistemas de **Soporte a las Decisiones**: agiliza la toma de decisiones.
+- Sistemas de **Información Gerencia**: ayuda con las tareas de gestión y organización.
+- Sistemas de **Procesamiento de Transacciones**: procesa la información operativa que produce una empresa.
 
+## Eficacia vs Eficiencia:
+Eficacia: medida en la que un sistema alcanza el objetivo que persigue.
+Eficiencia: medida en la que un sistema utiliza recursos para alcanzar un objetivo.
+
+Ejemplo: Dos coches que permiten hacer desplazamiento de 100km/dia.
+- El primero consume 5 litro de combustible para recorrer 100km a velocidad de 10km/h
+- El segundo consume 8 litro de combustible para recorrer 100km a velocidad de 10km/h
+
+Ambos conches son eficaces porque permiten desplazarse 100km. Pero el primero es el más eficiente de los dos, porque utiliza menos recursos para hacer su recorrido.
+
+## Modelo Funcional vs Modelo de Procesos de Negocio
+
+|Modelo Funcional| Modelo de Procesos de Negocio |
+|----------------|-------------------------------|
+| Enfoque Vertical: cada departamento maneja su propio sistema de información y formato de datos. | Enfoque Horizontal: los departamentos manejan un sistema de información y formato de datos en común |
+| Baja capacidad de reacción ante cambios en el mercado | Alta capacidad de reacción ante cambio en el mercado |
+| Integración entre departamentos lenta: <br>- Alta redundancia de datos <br>- Baja fiabilidad en la colaboración entre departamentos| Integración entre departamentos ágil: <br>- Baja redundancia de datos <br>- Alta eficiencia en la colaboración entre departamentos|
+
+## Requisitos de un buen Sistema de Información Integradoede:
+
+- Entender qué funciones se realizan en cada area de la empresa.
+- Conocer qué datos necesitan compartir las areas funcionales.
+
+## Funciones genéricas de los SI:
+
+### Marketing y Ventas
+
+|Entradas|Salidas|
+|--------|-------|
+| - Datos de los clientes <br>- Datos de los pedidos <br>- Previsiones de ventas <br>- Costos de producción por unidad <br>- Costos de campaña comercial | - Estrategias de ventas <br>- Precios de los productos <br>- Necesidades de personal |
+
+### Fabricación
+
+|Entradas|Salidas|
+|--------|-------|
+|- Ventas de productos <br>- Planes de producción <br>- Niveles de inventario <br>- Políticas de contratación temporal de personal |- Ordenes de materias primas y empaquetado <br>- Fechas de finalización/envió de productos en fabricación <br>- Informes de producción e inventario <br>- Necesidades de personal |
