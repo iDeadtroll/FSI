@@ -42,7 +42,7 @@ Ambos conches son eficaces porque permiten desplazarse 100km. Pero el primero es
 | Baja capacidad de reacción ante cambios en el mercado | Alta capacidad de reacción ante cambio en el mercado |
 | Integración entre departamentos lenta: <br>- Alta redundancia de datos <br>- Baja fiabilidad en la colaboración entre departamentos| Integración entre departamentos ágil: <br>- Baja redundancia de datos <br>- Alta eficiencia en la colaboración entre departamentos|
 
-## Requisitos de un buen Sistema de Información Integradoede:
+## Requisitos de un buen Sistema de Información Integrado:
 
 - Entender qué funciones se realizan en cada area de la empresa.
 - Conocer qué datos necesitan compartir las areas funcionales.
@@ -59,4 +59,31 @@ Ambos conches son eficaces porque permiten desplazarse 100km. Pero el primero es
 
 |Entradas|Salidas|
 |--------|-------|
-|- Ventas de productos <br>- Planes de producción <br>- Niveles de inventario <br>- Políticas de contratación temporal de personal |- Ordenes de materias primas y empaquetado <br>- Fechas de finalización/envió de productos en fabricación <br>- Informes de producción e inventario <br>- Necesidades de personal |
+|- Ventas de productos <br>- Planes de producción <br>- Niveles de inventario <br>- Políticas de contratación temporal de personal |- Ordenes de materias primas y empaquetado <br>- Fechas de finalización/envió de productos en fabricación <br>- Informes de producción e inventario <br>- Necesidades de personal 
+## ERP (Enterprise Resource Planning)
+
+SI Integrado que integra y
+automatiza las operaciones de una empresa dentro de su cadena de
+suministro.
+
+características:
+- Coordina la información en los diferentes procesos de negocio.
+- Único SI para toda la compañía.
+- Base de datos centralizada para compartir información.
+- Información operativa actualizada en tiempo real.
+
+### ¿Cuánto cuesta un ERP?
+- No se puede dar una cifra. Desde cientos de miles de euros hasta millones.
+- Depende del tamaño de la compañía y de las necesidades de la misma:
+- Costos: 
+<br>- Licencias.
+<br>- Infraestructura hardware.
+<br>- Consultoría.
+<br>- Tiempo de implementación: la compañía a veces no puede realizar su actividad durante partes de ese periodo.
+<br>- Formación: De los empleados, los gerentes, ...
+
+### ¿Cómo de adaptable es un ERP?
+No es un sistema rígido del todo, pero hacer demasiados cambios resulta muy complejo y costoso.
+
+### ¿Es un ERP la solución a todos los problemas?
+No es la solución a todos lo problemas. Si ya existían problemas funcionales o de gestión en los diferentes proceso de negocio, la implementación de un ERP no solucionará dichos problemas.
